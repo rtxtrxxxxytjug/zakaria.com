@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+    <html  lang="en-US" >
+        <head> 
+            <!--Refresh document every 30 seconds:-->
+            <meta http-equiv="refresh" content="300">
+
+            <!--Setting the viewport to make your website look good on all devices:-->
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="styles.css">
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+            <style> body {background: linear-gradient(45deg, red, blue);}
+ul {
+  list-style: none;
+}
+
+.container {
+  width: 100%;
+  max-width: 1100px;
+}
+
+/* HEADER */
+header {
+  width: 100%;
+  padding: 2em;
+  text-align: center;
+  text-transform: uppercase;
+}
+header img {
+  width: clamp(90px, 10vw, 150px);
+}
+header h1 {
+  font-family: "Volkorn", serif;
+  font-weight: normal;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  letter-spacing: 3px;
+}
+header p {
+  letter-spacing: 2px;
+  color: var(--red);
+  font-size: clamp(0.8rem, 2vw, 1.2rem);
+}
+
+/* NAV */
+nav {
+  width: 100%;
+  margin: 0 auto;
+  padding: 2em;
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  column-gap: 2em;
+}
+nav ul {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  column-gap: var(--nav-gap);
+  justify-content: flex-end;
+}
+nav li,
+nav label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+  padding: 0.3em 0;
+}
+nav li {
+  cursor: pointer;
+  color: var(--black);
+  transition: color 0.5s;
+}
+nav label {
+  position: relative;
+  color: var(--red);
+}
+nav label svg {
+  position: absolute;
+  top: 7px;
+  right: -20px;
+  width: 12px;
+  height: 12px;
+  fill: none;
+  stroke: var(--red);
+  stroke-width: 2;
+  opacity: 0;
+  transform-origin: 50% 50%;
+}
+nav input[type="checkbox"] {
+  position: fixed;
+  top: 0;
+  left: 0;
+  appearance: none;
+}
+nav li:hover {
+  color: var(--red);
+}
+@media (max-width: 680px) {
+  nav {
+    grid-template-columns: max-content;
+  }
+  nav ul {
+    grid-template-columns: 1fr;
+    opacity: 0;
+    margin-top: 0.5em;
+    transition: opacity 0.2s;
+  }
+  nav label {
+    width: max-content;
+    user-select: none;
+    cursor: pointer;
+  }
+  nav label svg {
+    opacity: 1;
+    transition: transform 0.2s;
+  }
+  nav input[type="checkbox"]:checked ~ ul {
+    opacity: 1;
+  }
+  nav input[type="checkbox"]:checked + label svg {
+    transform: rotateZ(180deg) translateY(5px);
+  }
+}
+
+/* SECTION */
+section {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(7, 260px);
+  gap: 1em;
+  padding: 2em;
+}
+section figure {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+section figure img {
+  display: block;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  aspect-ratio: 1/1;
+}
+
+.content {
+  padding: 1.5em;
+  display: grid;
+  place-items: center;
+  background-color: var(--off-white);
+  transition: background-color 0.3s;
+}
+.content h2,
+.content p {
+  user-select: none;
+}
+.content h2 {
+  font-family: "Volkorn", serif;
+  font-weight: normal;
+  font-size: 2rem;
+}
+.content svg {
+  width: 24px;
+  height: 12px;
+  fill: none;
+  stroke: var(--red);
+  stroke-width: 2;
+  translate: 0;
+  transition: translate 0.3s;
+}
+.content > *:not(svg) {
+  scale: 1.05;
+  transition: scale 0.3s;
+}
+
+.content:hover {
+  background-color: var(--off-red);
+}
+.content:hover > *:not(svg) {
+  scale: 0.9;
+}
+
+figure:nth-of-type(1) {
+  grid-column: 1 / span 2;
+  grid-row: 1 / span 2;
+}
+figure:nth-of-type(2) {
+  grid-column: 4 / 5;
+  grid-row: 1 / 2;
+}
+figure:nth-of-type(3) {
+  grid-column: 4 / 5;
+  grid-row: 2 / 3;
+}
+figure:nth-of-type(4) {
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+}
+figure:nth-of-type(5) {
+  grid-column: 3 / span 2;
+  grid-row: 3 / 4;
+}
+figure:nth-of-type(6) {
+  grid-column: 2 / span 2;
+  grid-row: 4 / 5;
+}
+figure:nth-of-type(7) {
+  grid-column: 1 / 2;
+  grid-row: 5 / 6;
+}
+figure:nth-of-type(8) {
+  grid-column: 3 / span 2;
+  grid-row: 5 / span 2;
+}
+figure:nth-of-type(9) {
+  grid-column: 2 / span 2;
+  grid-row: 7 / 8;
+}
+
+.content:nth-of-type(1) {
+  grid-column: 3 / 4;
+  grid-row: 1 / span 2;
+}
+.content:nth-of-type(1) svg {
+  justify-self: start;
+}
+.content:nth-of-type(1):hover > svg {
+  translate: -5px 0px 0px;
+}
+
+.content:nth-of-type(2) {
+  grid-column: 1 / 2;
+  grid-row: 3 / span 2;
+}
+.content:nth-of-type(2) svg {
+  justify-self: end;
+}
+.content:nth-of-type(2):hover > svg {
+  translate: 5px 0px 0px;
+}
+
+.content:nth-of-type(3) {
+  grid-column: 4 / 5;
+  grid-row: 4 / 5;
+}
+.content:nth-of-type(3) svg {
+  justify-self: start;
+}
+.content:nth-of-type(3):hover > svg {
+  translate: -5px 0px 0px;
+}
+
+.content:nth-of-type(4) {
+  grid-column: 2 / 3;
+  grid-row: 5 / 6;
+}
+.content:nth-of-type(4):hover > svg {
+  translate: -5px 0px 0px;
+}
+.content:nth-of-type(4) svg {
+  justify-self: start;
+}
+
+.content:nth-of-type(5) {
+  grid-column: 1 / 3;
+  grid-row: 6 / 7;
+}
+.content:nth-of-type(5) svg {
+  justify-self: end;
+}
+.content:nth-of-type(5):hover > svg {
+  translate: 5px 0px 0px;
+}
+
+.content:nth-of-type(6) {
+  grid-column: 1 / 2;
+  grid-row: 7 / 8;
+}
+.content:nth-of-type(6) svg {
+  justify-self: end;
+}
+.content:nth-of-type(6):hover > svg {
+  translate: 5px 0px 0px;
+}
+
+.owner {
+  background-color: #fff;
+  grid-column: 4 / 5;
+  grid-row: 7 / 8;
+}
+.owner img {
+  width: 100px;
+  border-radius: 50%;
+}
+.owner p:first-of-type {
+  margin-top: 0.3rem;
+  font-size: 1.2rem;
+  line-height: 1.2rem;
+  color: var(--red);
+}
+.owner p:last-of-type {
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+.owner ul {
+  width: 80%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+}
+.owner svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--black);
+  fill: none;
+}
+
+@media (max-width: 800px) {
+  section {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+    padding: 1em;
+  }
+
+  figure:nth-of-type(1) {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+  }
+  figure:nth-of-type(2) {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+  }
+  figure:nth-of-type(3) {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+  }
+  figure:nth-of-type(4) {
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+  }
+  figure:nth-of-type(5) {
+    grid-column: 1 / 2;
+    grid-row: 4 / 5;
+  }
+  figure:nth-of-type(6) {
+    grid-column: 1 / 2;
+    grid-row: 5 / 6;
+  }
+  figure:nth-of-type(7) {
+    grid-column: 1 / 2;
+    grid-row: 6 / 7;
+  }
+  figure:nth-of-type(8) {
+    grid-column: 2 / 3;
+    grid-row: 7 / 8;
+  }
+  figure:nth-of-type(9) {
+    grid-column: 2 / 3;
+    grid-row: 8 / 9;
+  }
+
+  .content:nth-of-type(1) {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+  }
+  .content:nth-of-type(2) {
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+  }
+  .content:nth-of-type(3) {
+    grid-column: 2 / 3;
+    grid-row: 5 / 6;
+  }
+  .content:nth-of-type(4) {
+    grid-column: 2 / 3;
+    grid-row: 6 / 7;
+  }
+  .content:nth-of-type(5) {
+    grid-column: 1 / 2;
+    grid-row: 7 / 8;
+  }
+  .content:nth-of-type(6) {
+    grid-column: 1 / 2;
+    grid-row: 8 / 9;
+  }
+  .owner {
+    grid-column: 1 / 3;
+    grid-row: 9 / 10;
+  }
+}
+
+@media (max-width: 500px) {
+  section {
+    display: block;
+  }
+  .content {
+    display: block;
+    margin: 0.5em 0;
+  }
+  .content svg {
+    display: none;
+  }
+  .content h2 {
+    margin-bottom: 10px;
+  }
+  .figure {
+    display: block;
+    margin: 0.5em 0;
+  }
+  .owner {
+    display: grid;
+    place-items: center;
+    height: 260px;
+  }
+  .owner ul {
+    margin-top: 1em;
+  }
+  .owner svg {
+    display: block;
+  }
+}
+.NOM {font-size: 90px;}
+  
+            </style>
+
+        </head>
+
+
+
+
+
+
+        <body style="background-color:rgb(200, 140, 100)  ; " dir="rtl" >
+          <div class="content owner">
+            <img src="imag/Capture d’écran 2022-07-06 063710.jpg" style="width:19% ; ;" alt="Abigail Tenant photo"> <br><br><br>
+            <p><strong class="NOM" >Zakaria Bouarour</strong></p>
+            <p>Owner/Designer</p>
+            <ul>
+              <li>
+                <svg viewBox="0 0 24 24">
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                </svg>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM17.5 6.5h.01" />
+                </svg>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24">
+                  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
+                </svg>
+              </li>
+            </ul>
+          </div>
+      
+        </section>
+      
+      </div>
+
+
+
+
+
+
+
+                
+                
+                 <div class="jumbotron text-center">
+                <h1 style="font-size:5vw;text-align: center;"  >  عبد المولى المكوني للنجادة المغربية   </h1> 
+                <p>عبد المولى المكوني لتصميم الصالونات المغربية الافرشة الخاميات الكراسي و غيرها  </p> 
+                <h4 style="border: 2px solid orange; padding: 15px; ;text-align: justify; "  > عنوان المحل التجاري : سوق الصالحين رقم المحل 115  سلا </h4>
+                <h4 style="border: 2px solid orange; padding: 15px; ;text-align: justify; "  >     رقم الهاتف من اجل التواصل : 09 10 72 71 07    </h4>
+                </div>
+                    
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-sm-4">
+                        <h1 style="border: 2px solid powderblue; padding: 15px; ;"  >الصالونات المغربية التقليدية </h1>
+                        <p>   هذه بعض الصالونات من التصميم ديالنا  </p> 
+                        <img  src="imag/salon/WhatsApp Image 2022-09-29 at 22.13.25.jpeg"  style="width:70% ; border: solid black; " >
+                        <img  src="imag/salon/WhatsApp Image 2022-09-29 at 22.13.40.jpeg"  style="width:70% ;border: solid black;" >
+                        <img  src="imag/salon/WhatsApp Image 2022-09-29 at 22.13.56.jpeg"  style="width:70% ;border: solid black;" >
+                        <img  src="imag/salon/WhatsApp Image 2022-09-29 at 22.14.09.jpeg"  style="width:70% ;border: solid black;" >
+                    </div>
+
+                    <div class="col-sm-4">
+                        <h1 style="border: 2px solid powderblue; padding: 15px; ;"  >الخوامي المغربية  </h1>
+                        <p>   هذه بعض طلامط من التصميم ديالنا  </p> 
+                        <img  src="imag/tlamt/WhatsApp Image 2022-09-29 at 22.12.47.jpeg"  style="width:70% ; border: solid black; " >
+                        <img  src="imag/tlamt/WhatsApp Image 2022-09-29 at 22.13.04.jpeg"  style="width:70% ;border: solid black;" >
+                      </div>
+
+                      <div class="col-sm-4" >
+                        <h1  style="border: 2px solid powderblue; padding: 15px; ;"  >كراسي بتصميات المغربية  </h1>
+                        <p>   هذه بعض الكراسي من التصميم ديالنا  </p> 
+                        <img  src="imag/chaire/WhatsApp Image 2022-09-29 at 22.12.07.jpeg"  style="width:70% ; border: solid black; " >
+                        <img  src="imag/chaire/WhatsApp Image 2022-09-29 at 22.12.32.jpeg"  style="width:70% ;border: solid black;" >
+                      </div>
+                    </div>
+                  </div>
+                    
+<br><br><br><br><br>
+                  <h1 style="border: 2px solid powderblue; padding: 15px; background-color: greenyellow ;"  >  امثلة لبعض التصمييماتنا الصالونات و الخوامي المغربية التقليدية </h1>
+                  <iframe width="40%%" height="315" src="https://www.youtube.com/embed/WFhbu8iQZ04" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<br><br><br><br><br> <br><br><br><br>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/TA5ubisHUYU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>   
+<br><br><br><br><br> <br><br><br><br><br> <br><br><br><br><br> <br><br><br><br><br> <br><br><br><br><br> <br><br><br><br><br> <br><br><br><br><br> 
+                         
+                          
+
+
+                      
+    
+
+
+
+
+
+
+
+        </body>
+
+
+
+            
